@@ -4,18 +4,998 @@
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <title>jsPDF</title>
     </head>
-    <body>
-        <p id="to-pdf">HTML content...</p>
+    <body ng-app="myApp" ng-controller="myCtrl">
+        <button type='button' class="btn btn-primary" onclick='imprimir()'>Imprimir</button>
+        <div id='pdf-id'>
+        <div id='imprimir' class='container-fluid' style="margin-left:150px;background-color:#ffffff" >
+            <div class='container'>
+                      
+                      <table>
+                          <thead>
+                            <tr>
+                              <th>
+                                <span style='font-weight: bold;padding-left: 150px'>SUMÁRIO ESTRUTURAL - RORSCHACH/EXNER</span>
+                              </th>
+                            </tr>
+                          </thead>
+                        </table>
+            <div  class='row' style="margin-top:0px">
+              <div class='col-sm-2' style='width:150px;padding: 0px'>
+                <table>
+                  <thead>
+                    <td>
+                      <span style='font-weight: bold;'>LOCALIZAÇÃO</span>
+                    </td>
+                  </thead>
+                  <tr>
+                    <td>
+                      &nbsp;
+                    </td>
+                  </tr>
+                    <tr>
+                      <td>
+                        <span>Zf   = {{contagemNotaZ}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>ZSum = {{notaZCount}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>ZEst = {{ponderada[contagemNotaZ - 1]}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>W    = {{WTotal}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>(Wv  = {{somaLocalizacaoWv}})</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>D    = {{somaLocalizacaoD}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>Dd   = {{somaLocalizacaoDd}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>S    = {{somaLocalizacaoS}}</span>
+                      </td>
+                    </tr>
+                </table>
+                <table>
+                  <tr>
+                    <td>
+                      <span style='font-weight: bold'>
+                        Qualidade Desenv.
+                      </span>
+                    </td>
+                  </tr>
+                    <tr>
+                      <td>
+                        <span>+ = {{somaQdDQPlus}} (FQ-)</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>o = {{somaQdDQo}}  ({{somaDuploPlusMinus}})</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>v/+ = {{somaQdDQvPlus}} ({{somaDuploOMinus}})</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>v = {{somaQdDQv}} ({{somaDuploVPlusMinus}})</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>({{somaDuploVMinus}})</td>
+                    </tr>
+                </table>
+                <table>
+                  <tr>
+                    <td>
+                      <span style='font-weight: bold'>
+                        Qualidade Formal
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+                <div class="row">
+                    <div class='col-sm-3'>
+                      <span>FQx</span>
+                    </div>  
+                    <div class='col-sm-3'>FQf</div>
+                </div>
+                <div class='row'>
+                    <table style='margin-left:20px'>
+                          <tr>
+                            <td>+ = {{somaFqPlus}}</td>    
+                            <td style='padding-left: 25px'>+ = {{FQfPlus}}</td>    
+                          </tr>
+                          <tr>
+                            <td>o = {{somaFqO}}</td>   
+                            <td style='padding-left: 25px;'>o = {{FQfo}}</td>    
+                          </tr>
+                          <tr>
+                            <td>u = {{somaFqU}}</td>                          
+                            <td style='padding-left: 25px;'>u = {{FQfu}}</td>   
+                          </tr>
+                          <tr>
+                            <td>- = {{somaFqMinus}}</td>                          
+                            <td style='padding-left: 25px;'>- = {{FQfMinus}}</td>   
+                          </tr>
+                          <tr>
+  
+                          </tr>
+                    </table>
+                    <table style='margin-left:20px'>
+                          <tr>
+                            <td>MQual</td>  
+                            <td style='padding-left: 25px;'>SQx</td>     
+                          </tr>
+                          <tr>
+                            <td>+ = {{MQualPlus}}</td> 
+                            <td style='padding-left: 25px;'>+ = {{SQxPlus}}</td>       
+                          </tr>
+                          <tr>
+                            <td>o = {{MQualo}}</td>  
+                            <td style='padding-left: 25px;'>o = {{SQxo}}</td>      
+                          </tr>
+                          <tr>
+                            <td>u = {{MQualu}}</td>   
+                            <td style='padding-left: 25px;'>u = {{SQxu}}</td>   
+                          </tr>
+                          <tr>
+                            <td>- = {{MQualMinus}}</td>
+                            <td style='padding-left: 25px;'>- = {{SQxMinus}}</td>      
+                          </tr>
+                          <tr>
+                          </tr>
+                    </table>
+                </div>
+          </div>
+          <div class='col-sm-3' style='padding: 0px;width: 200px'>
+                <table style='width:100px'>
+                  <thead>
+                    <td>
+                      <span style='font-weight: bold;'>DETERMINANTES</span>
+                      <div>
+                        <span style='font-weight: bold'>Combinações</span>
+                      </div>
+                    </td>
+                  </thead>
+                  <tr>
+                    <td  
+                      ng-repeat = 'comb1 in combinacoes_cartao1 track by $index'>{{comb1}}</td>
+                  </tr>
+                  <tr>
+                    <td 
+                      ng-repeat = 'comb2 in combinacoes_cartao2 track by $index'>{{comb2}}</td>
+                  </tr>
+                  <tr>
+                    <td 
+                      ng-repeat = 'comb3 in combinacoes_cartao3 track by $index'>{{comb3}}</td>
+                  </tr>
+                  <tr>
+                    <td 
+                      ng-repeat = 'comb4 in combinacoes_cartao4 track by $index'>{{comb4}}</td>
+                  </tr>
+                  <tr>
+                    <td 
+                      ng-repeat = 'comb5 in combinacoes_cartao5 track by $index'>{{comb5}}</td>
+                  </tr>
+                  <tr>
+                    <td 
+                      ng-repeat = 'comb6 in combinacoes_cartao6 track by $index'>{{comb6}}</td>
+                  </tr>
+                  <tr>
+                    <td
+                      ng-repeat = 'comb7 in combinacoes_cartao7 track by $index'>{{comb7}}</td>
+                
+                  </tr>
+                  <tr>
+                    <td 
+                      ng-repeat = 'comb8 in combinacoes_cartao8 track by $index'>{{comb8}}</td>
+                  </tr>
+                  <tr>
+                    <td 
+                      ng-repeat = 'comb9 in combinacoes_cartao9 track by $index'>{{comb9}}</td>
+                  </tr>
+                  <tr>
+                    <td 
+                      ng-repeat = 'comb10 in combinacoes_cartao10 track by $index'>{{comb10}}</td>
+                  </tr>
+                </table>
+                <div class='text-center'>Total = {{totalCombinacoes}}</div>
+          </div>
+          <div class='col-sm-3' style='width:180px;padding-left: 0px; padding-right: 0px;'>
+                <table>
+                  <thead>
+                    <td>
+                      <span style='font-weight: bold;'>CONTEÚDOS</span>
+                    </td>
+                  </thead>
+                  <tr>
+                    <td>
+                      <span style='font-weight: bold'>
+                        Indiv.
+                      </span>
+                    </td>
+                  </tr>
+                    <tr>
+                      <td>
+                        <span>M   = {{indiv_M}}</span>
+                      </td>
+                      <td>
+                        <span>H   = {{indiv_H}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>FM = {{indiv_FM}}</span>
+                      </td>
+                      <td>
+                        <span>(H)   = {{indiv_H_paren}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>m = {{indiv_m}}</span>
+                      </td>
+                      <td>
+                        <span>Hd   = {{indiv_Hd}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>FC    = {{indiv_FC}}</span>
+                      </td>
+                      <td>
+                        <span>(Hd)   = {{indiv_Hd_paren}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>  CF = {{indiv_CF}}</span>
+                      </td>
+                      <td>
+                        <span>Hx   = {{indiv_Hx}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>C    = {{indiv_C}}</span>
+                      </td>
+                      <td>
+                        <span>A   = {{indiv_A}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>Cn   = {{indiv_Cn}}</span>
+                      </td>
+                      <td>
+                        <span>(A)   = {{indiv_A_paren}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>FC'   = {{indiv_FC_linha}}</span>
+                      </td>
+                      <td>
+                        <span>Ad   = {{indiv_Ad}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>C'F   = {{indiv_C_linha_F}}</span>
+                      </td>
+                      <td>
+                        <span>(Ad)   = {{indiv_Ad_paren}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>C'  = {{indiv_C_linha}}</span>
+                      </td>
+                      <td>
+                        <span>An   = {{indiv_An}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>FT   = {{indiv_FT}}</span>
+                      </td>
+                      <td>
+                        <span>Art   = {{indiv_Art}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>TF   = {{indiv_TF}}</span>
+                      </td>
+                      <td>
+                        <span>Ay   = {{indiv_Ay}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>T   = {{indiv_T}}</span>
+                      </td>
+                      <td>
+                        <span>Bl   = {{indiv_Bl}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>FV   = {{indiv_FV}}</span>
+                      </td>
+                      <td>
+                        <span>EX   = {{indiv_Ex}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>VF   = {{indiv_VF}}</span>
+                      </td>
+                      <td>
+                        <span>Fd   = {{indiv_Fd}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>V   = {{indiv_V}}</span>
+                      </td>
+                      <td>
+                        <span>Fi   = {{indiv_Fi}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>FY   = {{indiv_FY}}</span>
+                      </td>
+                      <td>
+                        <span>Ge   = {{indiv_Ge}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>YF   = {{indiv_YF}}</span>
+                      </td>
+                      <td>
+                        <span>Hh   = {{indiv_Hh}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>Y   = {{indiv_Y}}</span>
+                      </td>
+                      <td>
+                        <span>Ls   = {{indiv_Ls}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>Fr   = {{indiv_Fr}}</span>
+                      </td>
+                      <td>
+                        <span>Na   = {{indiv_Na}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>rF   = {{indiv_rF}}</span>
+                      </td>
+                      <td>
+                        <span>Sc   = {{indiv_Sc}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>FD   = {{indiv_FD}}</span>
+                      </td>
+                      <td>
+                        <span>Sx   = {{indiv_Sx}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>F   = {{indiv_F}}</span>
+                      </td>
+                      <td>
+                        <span>Xy   = {{indiv_Xy}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>a   = {{indiv_a}}</span>
+                      </td>
+                      <td>
+                        <span>Id   = {{indiv_id}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>Bt   = {{indiv_Bt}}</span>
+                      </td>
+                      <td>
+                        <span>Cg   = {{indiv_Cg}}</span>
+                      </td>
+                    </tr> 
+                    <tr>
+                      <td>
+                        <span>p   = {{indiv_p}}</span>
+                      </td>
+                      <td>
+                        <span>Cl   = {{indiv_Cl}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>Ma   = {{indiv_Ma}}</span>
+                      </td>
+                      <td>
+                        <span>Mp   = {{indiv_Mp}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>(2) = {{twoCount}}</td>
+                      <td>P = {{pCount}}</td>
+                    </tr>
+                </table>
+              </div>
+  
+              <div class="col-sm-3">
+                <div style='width:200px'>
+                        <span style='font-weight: bold'>ABORDAG. SUM.</span>
+                    </div>
+                <div class="row">
+                  <div class="col-sm-2" style='padding-right:250px'>
+                    
+                <table>
+                      <th>
+                        <td>
+                          <span style='font-weight: bold'>
+                            Cartão
+                          </span>
+                        </td>
+                        <td>
+                          <span style='font-weight: bold'>
+                            Localização
+                          </span>
+                        </td>
+                      </th>
+                      <tr>
+                        <td>I:</td>
+                        
+                        <td ng-repeat='local in localizacao_cartao1 track by $index'>{{local}}</td>
+                        <td>&nbsp;</td>
+                        <td>{{localizacao_cartao1.length}}</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>II:</td>
+                        <td ng-repeat='local in localizacao_cartao2 track by $index'>{{local}}</td>
+                        <td>&nbsp;</td>
+                        <td>{{localizacao_cartao2.length}}</td>
+                      </tr>
+                      <tr>
+                        <td>III:</td>
+                        
+                        <td ng-repeat='local in localizacao_cartao3 track by $index'>{{local}}</td>
+                        <td>&nbsp;</td>
+                        <td>{{localizacao_cartao3.length}}</td>                      
+                      </tr>
+                      <tr>
+                        <td>IV:</td>
+                        
+                         <td ng-repeat='local in localizacao_cartao4 track by $index'>{{local}}</td>
+                        <td>&nbsp;</td>
+                        <td>{{localizacao_cartao4.length}}</td>
+                      </tr>
+                      <tr>
+                        <td>V:</td>
+                        
+                         <td ng-repeat='local in localizacao_cartao5 track by $index'>{{local}}</td>
+                        <td>&nbsp;</td>
+                        <td>{{localizacao_cartao5.length}}</td>
+                      </tr>
+                      <tr>
+                        <td>VI:</td>
+                        
+                         <td ng-repeat='local in localizacao_cartao6 track by $index'>{{local}}</td>
+                        <td>&nbsp;</td>
+                        <td>{{localizacao_cartao6.length}}</td>
+                      </tr>
+                      <tr>
+                        <td>VII:</td>
+                        
+                         <td ng-repeat='local in localizacao_cartao7 track by $index'>{{local}}</td>
+                        <td>&nbsp;</td>
+                        <td>{{localizacao_cartao7.length}}</td>
+                      </tr>
+                      <tr>
+                        <td>VIII:</td>
+                        
+                         <td ng-repeat='local in localizacao_cartao8 track by $index'>{{local}}</td>
+                        <td>&nbsp;</td>
+                        <td>{{localizacao_cartao8.length}}</td>
+                      </tr>
+                      <tr>
+                        <td>IX:</td>
+                        
+                        <td ng-repeat='local in localizacao_cartao9 track by $index'>{{local}}</td>
+                        <td>&nbsp;</td>
+                        <td>{{localizacao_cartao9.length}}</td>
+                      </tr>
+                      <tr>
+                        <td>X:</td>
+                        
+                        <td ng-repeat='local in localizacao_cartao10 track by $index'>{{local}}</td>
+                        <td>&nbsp;</td>
+                        <td>{{localizacao_cartao10.length}}</td>
+                      </tr>
+               </table>
+                        <table>
+                      <th>
+                        <td>
+                          <span style='font-weight: bold'>
+                            Pont.Especial
+                          </span>
+                        </td>
+                      </th>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>Nivel 1</td>
+                        <td>Nivel 2</td>
+                      </tr>
+                      <tr>
+                        <td>DV =</td>
+                        <td>{{indiv_DV}} x1</td>
+                        <td>{{indiv_DV2}} x2</td>
+                      </tr>
+                      <tr>
+                        <td>INC =</td>
+                        <td>{{indiv_INC}} x2</td>
+                        <td>{{indiv_INC2}} x4</td>
+                      </tr>
+                      <tr>
+                        <td>DR=</td>
+                        <td>{{indiv_DR}} x3</td>
+                        <td>{{indiv_DR2}} x6</td>
+                      </tr>
+                      <tr>
+                        <td>FAB=</td>
+                        <td>{{indiv_FAB}} x4</td>
+                        <td>{{indiv_FAB2}} x7</td>
+                      </tr>
+                      <tr>
+                        <td>ALOG=</td>
+                        <td>{{indiv_ALOG}} x5</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>CON=</td>
+                        <td>{{indiv_CON}} x7</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>RAW SUM 6</td>
+                        <td>={{pont_especial_raw_sum}}</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>Wgtd SUM6</td>
+                        <td>={{pont_especial_wtgd_sum}}</td>
+                      </tr>
+                      <tr>
+                        <td>AB=</td>
+                        <td>{{indiv_AB}}</td>
+                        <td>CP=</td>
+                        <td>{{indiv_CP}}</td>
+                      </tr>
+                      <tr>
+                        <td>AG=</td>
+                        <td>{{indiv_AG}}</td>
+                        <td>MOR=</td>
+                        <td>{{indiv_MOR}}</td>
+                      </tr>
+                      <tr>
+                        <td>CFB=</td>
+                        <td>{{indiv_CFB}}</td>
+                        <td>PER=</td>
+                        <td>{{indiv_PER}}</td>
+                      </tr>
+                      <tr>
+                        <td>COP=</td>
+                        <td>{{indiv_COP}}</td>
+                        <td>PSV=</td>
+                        <td>{{indiv_PSV}}</td>
+                      </tr>
+               </table>   
+            </div>
+            </div>
+            </div>
+        </div>
+        <div>
+            <table>
+              <thead>              
+                  <td><span style="font-weight: bold">Controlo</span></td>
+                  <td style="padding-left: 230px;"><span style="font-weight: bold">AFETO</span></td>
+                  <td style="padding-left: 120px"><span style="font-weight: bold">INTERPESSOAL</span></td>
+              </thead>
+  
+            </table>
+            
+        </div>
+        
+          <div class='row'>
+            <div class="col-sm-3">
+              <table>
+                <tr>
+                  <td>
+                    R={{localCount}}
+                  </td>
+                  <td>
+                    &nbsp;
+                  </td>
+                  <td>
+                    L={{controle_L}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    EB={{indiv_M}}:{{controle_EB}}
+                  </td>
+                  <td style='padding-left:10px'>EA={{indiv_M + controle_EB}}</td>
+                  <td>EB Per=</td>
+                </tr>
+                <tr>
+                  <td>
+                    eb={{indiv_FM+indiv_m}}:{{controle_eb_part2}}
+                  </td>
+                  <td>es={{indiv_FM + indiv_m + controle_eb_part2}}</td>
+                  <td>D={{pontD}}</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>Adj es={{ adj_es }}</td>
+                  <td>AdjD={{adj_d}}</td>
+                </tr>
+                <tr>
+                  <td>
+                    FM={{indiv_FM}}
+                  </td>
+                  <td>C'={{controle_C_linha}}</td>
+                  <td>T={{indiv_FT + indiv_TF + indiv_T}}</td>
+                </tr>
+                <tr>
+                  <td>
+                    m={{indiv_m}}
+                  </td>
+                  <td>V={{indiv_FV + indiv_VF + indiv_V}}</td>
+                  <td>Y={{indiv_Y + indiv_YF + indiv_FY}}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-sm-2">
+              <table>
+                <tr>
+                  <td>
+                    FC:CF+C={{indiv_FC}}:{{indiv_CF + indiv_C}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    SumC':SumpC={{controle_C_linha}}:{{controle_EB}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    C Puro={{indiv_C}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Afr={{afeto_Afr}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    S={{somaLocalizacaoS}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Comb:R={{totalCombinacoes}}:{{localCount}} 
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    CP={{indiv_CP}}
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-sm-4">
+              <table>
+                <tr>
+                  <td>
+                    COP={{indiv_COP}} AG={{indiv_AG}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Fd={{indiv_Fd}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Isolamento/R={{isolamento}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    H:(H)+Hd+(Hd)={{indiv_H}}:{{indiv_H_paren + indiv_Hd + indiv_Hd_paren}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    (H)+(Hd):(A)+(Ad)={{indiv_H_paren + indiv_Hd_paren}}:{{indiv_A_paren + indiv_Ad_paren}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    H+A:Hd+Ad={{ indiv_H  + indiv_A }}:{{ indiv_Hd + indiv_Ad }}
+                    <!--  H+A:Hd+Ad={{ indiv_H + indiv_H_paren + indiv_A + indiv_A_paren }}:{{ indiv_Hd + indiv_Ad }} -->
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>  
+        
+        
+        <div>
+            <div class="row">
+                <div class="col-sm-2" style='width: 250px'><span style='font-weight: bold'>IDEACAO</span></div>
+                <div class="col-sm-2" style='width: 100px'><span style='font-weight: bold'>MEDIACAO</span></div>
+                <div class="col-sm-2" style='width: 165px;padding-right: 0px'>
+                  <span style='font-weight: bold'>
+                    PROCESSAMENTO
+                  </span>
+                </div>
+                <div class="col-sm-2">
+                  <span style='font-weight: bold'>
+                    IMAGEM DE SI
+                  </span>
+                </div>
+            </div>  
+        </div>
+        <div class='container'>
+          <div class='row'>
+            <div class="col-sm-2" style="width:250px">
+              <table>
+                <tr>
+                  <td>
+                    a:p={{indiv_a}}:{{indiv_p}}
+                  </td>
+                  <td>
+                    Sum 6={{pont_especial_raw_sum}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Ma:Mp={{indiv_Ma}}:{{indiv_Mp}}
+                  </td>
+                  
+                  <td>Nivel 2={{nivel2}}</td>
+                </tr>
+                <tr>
+                  <td>
+                    2AB+(Art+Ay)={{(2 * indiv_AB)+indiv_Art + indiv_Ay}}
+                  </td>
+                  <td>
+                    WSum6={{pont_especial_wtgd_sum}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>M-={{MQualMinus}}</td>
+                  <!--<td>M none=WRONG</td>-->
+                </tr>
+              </table>
+            </div>
+            <div class="col-sm-2" style="padding: 0px;width:100px">
+              <table>
+                <tr>
+                  <td>
+                    P={{pCount}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    X+%={{mediacao_X_plus}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    F+%={{mediacao_F_plus}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    X-%={{mediacao_X_minus}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    S-%={{mediacao_S_minus}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Xu%={{mediacao_X_u}}
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-sm-2" style="padding: 0px;width:100px">
+              <table>
+                <tr>
+                  <td>
+                    Zf={{contagemNotaZ}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Zd={{somaNotaZ - ponderada[contagemNotaZ - 1]}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    W:D:Dd={{WTotal}}:{{somaLocalizacaoD}}:{{somaLocalizacaoDd}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    W:M={{WTotal}}:{{indiv_M}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    DQ+={{somaQdDQPlus}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    DQv={{somaQdDQv}}
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-sm-2" style="padding-left:50px;">
+              <table>
+                <tr>
+                  <td>
+                    3r+(2)/R={{imagem}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Fr + rF={{imagem_Fr_rF}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    FD={{indiv_FD}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    An + Xy={{indiv_An + indiv_Xy}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    MOR={{indiv_MOR}}
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>  
+        </div>
+        <div class='container'>
+        
+          <div class='row'>
+            <div class='col-sm-2' style='padding-right:30px;width:10px'>
+              <div style='width: 30px;height: 30px;border-style: solid;text-align:center;' 
+              ng-style="sczi >= 4  && {'background':'black'}">
+              </div>
+            </div>
+            <div class="col-sm-3 " style='padding-left:5px;margin-top:5px;' >
+                SCZI {{sczi}}
+            </div>
+            <div class='col-sm-2' style='padding-right:30px;width:10px'>
+              <div style='width: 30px;height: 30px;border-style: solid;text-align:center;' 
+              ng-style="depi >= 5  && {'background':'black'}">
+              </div>
+            </div>
+            <div class="col-sm-3" style='padding-left:5px;margin-top:5px;'>
+              DEPI {{depi}}
+            </div>
+            <div class='col-sm-2' style='padding-right:30px;width:10px'>
+              <div style='width: 30px;height: 30px;border-style: solid;text-align:center;' 
+              ng-style="cdi >= 4  && {'background':'black'}">
+              </div>
+            </div>
+            <div class="col-sm-1 " style='padding-left:5px;margin-top:5px;'>
+              CDI {{cdi}}
+            </div>
+          </div>
+          
+          <div class='row'>
+            <div class='col-sm-2' style='padding-right:30px;width:10px'>
+              <div style='width: 30px;height: 30px;border-style: solid;text-align:center;' 
+              ng-style="constelacao >= 8 && {'background':'black'}"> 
+              </div>
+            </div>
+            <div class="col-sm-3" style='padding-left:5px;margin-top:5px;'>
+              S-con 
+            </div>
+            <div class='col-sm-2' style='padding-right:30px;width:10px'>
+              <div style='width: 30px;height: 30px;border-style: solid;text-align:center;' 
+              ng-style="condicaoSimNao == 'Sim' && {'background':'black'}">
+              </div>
+            </div>
+            <div class="col-sm-3" style='padding-left:5px;margin-top:5px;'>
+              HVI 
+            </div>
+            <div class='col-sm-2' style='padding-right:30px;width:10px'>
+              <div style='width: 30px;height: 30px;border-style: solid;text-align:center;' 
+              ng-style="obsDescricao == 'Sim' && {'background':'black'}">
+              </div>
+            </div>
+            <div class="col-sm-1" style='padding-left:5px;margin-top:5px;'>
+              OBS 
+            </div>
+          </div>
+        </div>
+      <!-- </canvas>   -->
+    </div>
+        </div>
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
     <script>
-        var pdf = new jsPDF('p','pt','a4');
-        pdf.addHTML(document.body,function() {
-            pdf.save('web.pdf');
-        });
+        function imprimir() {
+            var pdf = new jsPDF('p', 'mm', [100,100]);//new jsPDF('p','pt','a4');
+            pdf.setFontSize(15);
+            pdf.addHTML(document.getElementById('imprimir'),function() {
+                pdf.save('web.pdf');
+            });
+        }
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl', function($scope) {
+            var vm = $scope;
+        })
     </script>
 </html>
