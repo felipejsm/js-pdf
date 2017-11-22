@@ -12,9 +12,8 @@
     </head>
     <body ng-app="myApp" ng-controller="myCtrl">
         <button type='button' class="btn btn-primary" onclick='imprimir()'>Imprimir</button>
-        <div id='pdf-id'>
-        <div id='imprimir' class='container-fluid' style="margin-left:150px;background-color:#ffffff" >
-            <div class='container'>
+        <div id='imprimir' class="center-block" style="background-color:#ffffff" >
+            <div class='container' style="width: 60%">
                       
                       <table>
                           <thead>
@@ -987,8 +986,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
     <script>
         function imprimir() {
-            var pdf = new jsPDF('p', 'mm', [100,100]);//new jsPDF('p','pt','a4');
-            pdf.setFontSize(15);
+            var pdf = new jsPDF('p', 'pt', [800,600]);//new jsPDF('p','pt','a4');
+           // pdf.addPage(800,600);
+            pdf.setFontSize(30);
             pdf.addHTML(document.getElementById('imprimir'),function() {
                 pdf.save('web.pdf');
             });
