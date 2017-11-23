@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
         * { box-sizing: border-box; }
 
@@ -31,7 +30,8 @@
         width: 160px;
         height: 120px;
         float: left;
-        background: #D26;
+        /*background:  #D26;*/
+        background: #ffffff;
         border: 2px solid #333;
         border-color: hsla(0, 0%, 0%, 0.5);
         border-radius: 5px;
@@ -44,7 +44,7 @@
         .grid-item--height2 { height: 200px; }
         .grid-item--height3 { height: 260px; }
         .grid-item--height4 { height: 360px; }
-
+        .titulo {font-weight: bold; font-size: 24px}
     </style>
     <title>Msnr</title>
 </head>
@@ -55,7 +55,39 @@
     
     <div class="grid" id='imprimir' style="background-color:#ffffff">
       <div class="grid-item"></div>
-      <div class="grid-item grid-item--width2 grid-item--height2"></div>
+      <div class="grid-item grid-item--width2 grid-item--height2">
+            <div class='container'>
+                <div class='row'>
+                    <div class="col-sm">
+                        <span class='titulo'>LOCALIZAÇÃO</span>
+                    </div>
+                    <div class="col-sm">
+                        ZF = {{zf}}
+                    </div>
+                    <div class="col-sm">
+                        ZSum = {{zSum}}
+                    </div>
+                    <div class="col-sm">
+                        ZEst = {{zEst}}
+                    </div>
+                    <div class="col-sm">
+                        W = {{w}}
+                    </div>
+                    <div class="col-sm">
+                        (WV = {{vw}})
+                    </div>
+                    <div class="col-sm">
+                        D = {{d}}
+                    </div>
+                    <div class="col-sm">
+                        DD = {{dd}}
+                    </div>
+                    <div class="col-sm">
+                        S = {{s}}
+                    </div>
+                </div>
+            </div>
+      </div>
       <div class="grid-item grid-item--height3"></div>
       <div class="grid-item grid-item--height2"></div>
       <div class="grid-item grid-item--width3"></div>
@@ -81,6 +113,8 @@
     
     
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
@@ -103,6 +137,14 @@
     var app = angular.module('myApp',[]);
     app.controller('myCtrl', function($scope) {
         var vm = $scope;
+        vm.zf = 18;
+        vm.zSum = 8;
+        vm.zEst = 1;
+        vm.w = 10;
+        vm.vw = 20;
+        vm.d = 14;
+        vm.dd = 0;
+        vm.s = 5;
     })
 </script>
 </html>
