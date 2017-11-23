@@ -8,11 +8,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <style>
+            #myId {
+              font-weight: bold;
+              font-style : italic; 
+            }
+        </style>
         <title>jsPDF</title>
     </head>
     <body ng-app="myApp" ng-controller="myCtrl">
         <button type='button' class="btn btn-primary" onclick='imprimir()'>Imprimir</button>
         <div id='imprimir' class="center-block" style="background-color:#ffffff" >
+            <p id='myId'>Testando style no jsPDF</p>
             <div class='container' style="width: 60%">
                       
                       <table>
