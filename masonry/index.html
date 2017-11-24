@@ -14,7 +14,7 @@
 
         .grid {
         background: #EEE;
-        max-width: 1200px;
+        max-width: 1600px;
         }
 
         /* clearfix */
@@ -36,7 +36,7 @@
         border-color: hsla(0, 0%, 0%, 0.5);
         border-radius: 5px;
         }
-
+        .grid-item--width1 { width: 280px; }
         .grid-item--width2 { width: 320px; }
         .grid-item--width3 { width: 480px; }
         .grid-item--width4 { width: 640px; }
@@ -44,7 +44,8 @@
         .grid-item--height2 { height: 200px; }
         .grid-item--height3 { height: 260px; }
         .grid-item--height4 { height: 360px; }
-        .titulo {font-weight: bold; font-size: 24px}
+        .grid-item--height5 { height: 600px; }
+        .titulo {font-weight: bold; font-size: 20px}
     </style>
     <title>Msnr</title>
 </head>
@@ -54,7 +55,6 @@
     <h1>Masonry - columnWidth</h1>
     
     <div class="grid" id='imprimir' style="background-color:#ffffff">
-      <div class="grid-item"></div>
       <div class="grid-item grid-item--width2 grid-item--height2">
             <div class='container'>
                 <div class='row'>
@@ -88,14 +88,62 @@
                 </div>
             </div>
       </div>
-      <div class="grid-item grid-item--height3"></div>
-      <div class="grid-item grid-item--height2"></div>
-      <div class="grid-item grid-item--width3"></div>
+      <div class="grid-item grid-item--width2 grid-item--height3">
+        <div class='container'>
+            <div class='row'>
+                <div class="col-sm">
+                    <span class='titulo'>DETERMINANTES</span>
+                </div>
+            </div>
+            <div class='row'>
+                <div class="col-sm">
+                    <span class='titulo'>Combinações</span>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="grid-item grid-item--width2 grid-item--height5">
+            <div class='container'>
+                <div class='row'>
+                    <div class="col-sm">
+                        <span class='titulo'>CONTEÚDOS</span>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class="col-sm">
+                        <span class='titulo'>Indiv.</span>
+                    </div>
+                </div>
+            </div>
+      </div>
+      <div class="grid-item grid-item--width2">
+            <div class='container'>
+                    <div class='row'>
+                        <div class="col-sm">
+                            <span class='titulo'>ABORDAG. SUM.</span>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-sm">
+                            <span class='titulo'>Cartão	Localização</span>
+                        </div>
+                    </div>
+                </div>
+      </div>
       <div class="grid-item"></div>
       <div class="grid-item"></div>
       <div class="grid-item grid-item--height2"></div>
-      <div class="grid-item grid-item--width2 grid-item--height3"></div>
-      <div class="grid-item"></div>
+      <div class="grid-item grid-item--width2 grid-item--height3">
+            <div class='container'>
+                <div class='row'>
+                    <div class="col-sm">
+                        <span class='titulo'>Qualidade Desenvolvimento</span>
+                    </div>
+                </div>
+            </div>
+      </div>
+      <div class="grid-item grid-item--width3">
+        </div>
       <div class="grid-item grid-item--height2"></div>
       <div class="grid-item"></div>
       <div class="grid-item grid-item--width2 grid-item--height2"></div>
