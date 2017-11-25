@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title>Grd</title>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+            <div class='container'>
+                    <div class="row">
+                            <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3 Resize your viewport or check it out on your phone for an exampl</div>
+                            <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+                          
+                            <!-- Add the extra clearfix for only the required viewport -->
+                            <div class="clearfix visible-xs-block"></div>
+                          
+                            <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+                            <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+                          </div>
+            </div>
+            <div class='container-fluid'>
+                    <div class="col-xs-6 col-sm-3" style='border-style: solid;'>
+                        <div class='row'>
+                                <span class='titulo'>LOCALIZAÇÃO</span>
+                        </div>
+                        <div class='row'>
+                                ZF = {{zf}}
+                        </div>
+                        <div class='row'>
+                                ZSum = {{zSum}}
+                        </div>
+                        <div class='row'>
+                                ZEst = {{zEst}}
+                        </div>
+                        <div class='row'>
+                                W = {{w}}
+                        </div>
+                        <div class='row'>
+                                (WV = {{vw}})
+                        </div>
+                        <div class='row'>
+                                D = {{d}}
+                        </div>
+                        <div class='row'>
+                                DD = {{dd}}
+                        </div>
+                        <div class='row'>
+                                S = {{s}}
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3" style='border-style: solid;'>
+                            <div class='row'>
+                                        <span class='titulo'>DETERMINANTES</span>
+                                </div>
+                                <div class='row'>
+                                        <span class='titulo'>Combinações</span>
+                                </div>
+                                <div class='row'><br /></div>
+                                <div class='row'><br /></div>
+                                <div class='row'><br /></div>
+                                <div class='row'><br /></div>
+                                <div class='row'><br /></div>
+                                <div class='row'><br /></div>
+                                <div class='row'><br /></div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3" style='border-style: solid;'>
+                        <div class='container'>
+                                <div class='row'>
+                                        <span class='titulo'>CONTEÚDOS</span>
+                                </div>
+                                <div class='row'>
+                                        <span class='titulo'>Indiv.</span>
+                                </div>
+                                <div class='row'><br /></div>
+                                <div class='row'><br /></div>
+                                <div class='row'><br /></div>
+                                <div class='row'><br /></div>
+                                <div class='row'><br /></div>
+                                <div class='row'><br /></div>
+                                <div class='row'><br /></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3" style='border-style: solid;'>
+                            <div class='container'>
+                                    <div class='row'>
+                                            <span class='titulo'>ABORDAG. SUM.</span>
+                                    </div>
+                                    <div class='row'>
+                                            <span class='titulo'>Cartão	Localização</span>
+                                    </div>
+                                    <div class='row'><br /></div>
+                                    <div class='row'><br /></div>
+                                    <div class='row'><br /></div>
+                                    <div class='row'><br /></div>
+                                    <div class='row'><br /></div>
+                                    <div class='row'><br /></div>
+                                    <div class='row'><br /></div>
+                                </div>
+                                
+                    </div>
+                    <div class="col-sm-3" style='border-style: solid;'>
+                            <div class='row'>
+                                        <span class='titulo'>Qualidade Desenvolvimento</span>
+                            </div>
+                            <div>
+                                    + = (FQ-)
+                                    o = ()
+                                    v/+ = ()
+                                    v = ()
+                                    ()
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<script>
+    function imprimir() {
+        var pdf = new jsPDF('p', 'pt', [800,600]);//new jsPDF('p','pt','a4');
+       // pdf.addPage(800,600);
+        pdf.setFontSize(30);
+        pdf.addHTML(document.getElementById('imprimir'),function() {
+            pdf.save('web.pdf');
+        });
+    }
+    var app = angular.module('myApp',[]);
+    app.controller('myCtrl', function($scope) {
+        var vm = $scope;
+        vm.zf = 18;
+        vm.zSum = 8;
+        vm.zEst = 1;
+        vm.w = 10;
+        vm.vw = 20;
+        vm.d = 14;
+        vm.dd = 0;
+        vm.s = 5;
+    })
+</script>
+</html>
