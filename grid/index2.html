@@ -17,14 +17,17 @@
         display: flex;
         flex-wrap: wrap;
         }
-        .titulo {font-weight: bold; font-size: 20px}
-        .subtitulo {font-weight: bold; font-size: 15px}
+        .titulo {font-weight: bold; font-size: 15px}
+        .subtitulo {font-weight: bold; font-size: 10px}
+        .quadrado {width: 30px;height: 30px;border-style: solid;text-align:center;}
     </style>
     <title>grd2</title>
 </head>
 <body ng-app="myApp" ng-controller="myCtrl">
-            <div class="row">
-                <div class="col-md-2" style="height:200px;">
+        <button type='button' class="btn btn-primary" onclick='imprimir()'>Imprimir</button>
+        <div id="imprimir" class="center-block" style="background-color: #ffff;width: 80%">
+            <div class="row center-block" style="background-color:#ffffff">
+                <div class="col-sm-2" style="height:200px;">
                         <div class='container'>
                                 <div class='row'>
                                     <span class='titulo'>LOCALIZAÇÃO</span>
@@ -55,7 +58,7 @@
                                 </div>
                         </div>
                 </div>
-                <div class="col-xs-3" style="height:200px;">
+                <div class="col-sm-3" style="height:200px;">
                     <div class='container'>
                         <div class='row'>
                                 <span class='titulo'>DETERMINANTES</span>
@@ -65,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-3" style="height:200px;">
+                <div class="col-sm-3" style="height:200px;">
                     <div class='container'>
                             <div class='row'>
                                     <span class='titulo'>CONTEÚDOS</span>
@@ -75,70 +78,69 @@
                             </div>
                     </div>
                 </div>
-                <div class="col-xs-3" style="height:200px;">
+                <div class="col-sm-3" style="height:200px;">
                         <div class='container'>
                                 <div class='row'>
                                         <span class='titulo'>ABORDAG. SUM.</span>
                                 </div>
                                 <div class='row'>
-                                        <span class='subtitulo'>Cartão	Localização</span>
+                                        <span class='titulo'>Cartão	Localização</span>
                                 </div>
                         </div>
                 </div>
-                <div class="col-md-2" style="height:200px;">
+                <div class="col-sm-2" style="height:200px;">
                     <div class='container'>
                         <div class='row'>
                             <span class='titulo'>Qualidade Desenv.</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-3" style="height:200px;">
+                <div class="col-sm-3" style="height:200px;">
                     6
                 </div>
-                <div class="col-xs-3" style="height:200px;">
+                <div class="col-sm-3" style="height:200px;">
                     7
                 </div>
-                <div class="col-xs-3" style="height:200px;">
+                <div class="col-sm-3" style="height:200px;">
                     <div class='container'>
                             <div class='row'>
-                                    <span class='subtitulo'>Pontuação Especial</span>
+                                    <span class='titulo'>Pontuação Especial</span>
                             </div>
                     </div>
                 </div>
-                <div class="col-md-2" style="height:200px;">
+                <div class="col-sm-2" style="height:200px;">
                     <div class='container'>
                             <div class='row'>
                                 <span class='titulo'>Qualidade Formal</span>
                             </div>
                     </div>
                 </div>
-                <div class="col-xs-3" style="height:200px;">
+                <div class="col-sm-3" style="height:200px;">
                         10
                 </div>
-                <div class="col-xs-3" style="height:200px;">
+                <div class="col-sm-3" style="height:200px;">
                         11
                 </div>
-                <div class="col-xs-3" style="height:200px;">
+                <div class="col-sm-3" style="height:200px;">
                         12
                 </div>
             </div>
-            <hr></hr>
-            <div class="row fix">
-                <div class="col-md-2" style="height:150px;">
+            <div class="row fix center-block" style="background-color:#ffffff">
+                <div class="col-sm-4" style="height:150px;">
                     <div class='container'>
                         <div class='row'>
                             <span class='titulo'>CONTROLE</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2" style="height:150px;">
+                <div class="col-sm-4" style="height:150px;">
                         <div class='container'>
                                 <div class='row'>
                                     <span class='titulo'>AFETO</span>
                                 </div>
                             </div>
                 </div>
-                <div class="col-md-2" style="height:150px;">
+                <div class="col-sm-4" style="height:150px;">
                         <div class='container'>
                                 <div class='row'>
                                     <span class='titulo'>ITERPESSOAL</span>
@@ -146,30 +148,29 @@
                             </div>
                 </div>
             </div>
-            <hr></hr>
-            <div class="row fix">
-                <div class="col-md-2" style="height:150px;">
+            <div class="row fix center-block" style="background-color:#ffffff">
+                <div class="col-sm-3" style="height:150px;">
                     <div class='container'>
                         <div class='row'>
                             <span class='titulo'>IDEAÇÃO</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2" style="height:150px;">
+                <div class="col-sm-3" style="height:150px;">
                         <div class='container'>
                                 <div class='row'>
                                     <span class='titulo'>MEDIAÇÃO</span>
                                 </div>
                         </div>
                 </div>
-                <div class="col-md-2" style="height:150px;">
+                <div class="col-sm-3" style="height:150px;">
                         <div class='container'>
                                 <div class='row'>
                                     <span class='titulo'>PROCESSAMENTO</span>
                                 </div>
                         </div>
                 </div>
-                <div class="col-md-2" style="height:150px;">
+                <div class="col-sm-3" style="height:150px;">
                         <div class='container'>
                                 <div class='row'>
                                     <span class='titulo'>IMAGEM DE SI</span>
@@ -177,6 +178,43 @@
                         </div>
                 </div>
             </div>
+            <div class="row fix center-block" style="background-color:#ffffff">
+                <div class='container'>
+                    <div class='row'>
+                        <div class='col-sm-2'>
+                            <div class='quadrado'> 
+                            </div>
+                            SCZI
+                        </div>
+                        <div class='col-sm-2'>
+                                <div class='quadrado'> 
+                                </div>
+                                DEPI
+                        </div>
+                        <div class='col-sm-2'>
+                                <div class='quadrado'> 
+                                </div>
+                                CDI
+                        </div>
+                        <div class='col-sm-2'>
+                                <div class='quadrado'> 
+                                </div>
+                                S-con
+                        </div>
+                        <div class='col-sm-2'>
+                                <div class='quadrado'> 
+                                </div>
+                                HVI
+                        </div>
+                        <div class='col-sm-2'>
+                                <div class='quadrado'> 
+                                </div>
+                                OBS
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
