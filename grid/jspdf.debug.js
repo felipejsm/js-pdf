@@ -12,7 +12,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 
-doc.internal.scaleFactor = 1.33
+
 
 var asyncGenerator = function () {
   function AwaitValue(value) {
@@ -3967,7 +3967,7 @@ AcroForm.internal.setBitPosition = function (variable, position, value) {
 		'use strict';
 
 		if (typeof html2canvas === 'undefined' && typeof rasterizeHTML === 'undefined') throw new Error('You need either ' + 'https://github.com/niklasvh/html2canvas' + ' or https://github.com/cburgmer/rasterizeHTML.js');
-
+        
 		if (typeof x !== 'number') {
 			options = x;
 			callback = y;
